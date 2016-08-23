@@ -7,10 +7,7 @@ module Aws
   def self.init
     @@dynamo_table = false
     @@dynamo_db = false
-    Aws.config
-    if AWS_SETTINGS["aws_dynamo"]
-      @@dynamo_db = Aws::DynamoDB::Client.new
-    end
+    @@dynamo_db = Aws::DynamoDB::Client.new
   end
   #the method that save in aws database
   def self.save_products_to_db(params)
@@ -25,6 +22,15 @@ module Aws
     }
     fields.merge!(params[:custom_fields]) if params[:custom_fields]
     @@dynamo_table.items.create(fields)
+  end
+
+  def self.query_products_from_dynamo
+    return if !@@dynamo_db
+
+    @@dynamo_db.scan({
+        table_name: "forge-gallery-prod",
+        select: "ALL_ATTRIBUTES"
+    })
   end
 end
 
