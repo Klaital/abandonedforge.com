@@ -1,0 +1,4 @@
+aws_dynamo:
+    access_key_id: "AKIAJZMQEE4G7632DVTA"
+    secret_access_key: "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"
+    region: "us-west-1"
