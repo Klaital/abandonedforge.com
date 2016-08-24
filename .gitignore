@@ -3,29 +3,29 @@
 *.rbc
 capybara-*.html
 .rspec
-gallery/log
-gallery/tmp
-gallery/db/*.sqlite3
-gallery/db/*.sqlite3-journal
-gallery/public/system
-gallery/coverage/
-gallery/spec/tmp
+log
+tmp
+db/*.sqlite3
+db/*.sqlite3-journal
+public/system
+coverage/
+spec/tmp
 **.orig
 rerun.txt
 pickle-email-*.html
 
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
-gallery/config/initializers/secret_token.rb
-gallery/config/secrets.yml
-gallery/config/aws_dynamo.yml
+config/initializers/secret_token.rb
+config/secrets.yml
+config/aws_dynamo.yml
 
 # dotenv
 # TODO Comment out this rule if environment variables can be committed
 .env
 
 ## Environment normalization:
-gallery/.bundle
-gallery/vendor/bundle
+.bundle
+vendor/bundle
 
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
@@ -34,7 +34,7 @@ gallery/vendor/bundle
 .rvmrc
 
 # if using bower-rails ignore default bower_components path bower.json files
-gallery/vendor/assets/bower_components
+vendor/assets/bower_components
 *.bowerrc
 bower.json
 
