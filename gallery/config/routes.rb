@@ -56,6 +56,8 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  get '/products/:id', to: 'products#view'
+  get '/products', to: 'products#index'
 
   root 'products#index'
 end

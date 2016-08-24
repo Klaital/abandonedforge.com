@@ -19,7 +19,7 @@ module Aws
       })
     else
       @@dynamo_db.get_item({
-          table_name: "products",
+          table_name: "forge-gallery-prod",
           key: {
               'product-id' => id
           }
