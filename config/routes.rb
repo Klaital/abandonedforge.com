@@ -59,5 +59,8 @@ Rails.application.routes.draw do
   get '/products/:id', to: 'products#view'
   get '/products', to: 'products#index'
 
+  get '/getservicestatus', to: 'service_status#index'
+  get '/getservicehealth', to: 'service_status#index'
+
   root 'products#index'
 end

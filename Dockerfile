@@ -21,6 +21,7 @@ RUN mkdir -p ./app/helpers
 RUN mkdir -p ./app/mailers
 RUN mkdir -p ./app/views/layouts
 RUN mkdir -p ./app/views/products
+RUN mkdir -p ./app/views/service_status
 RUN mkdir -p ./app/models/concerns
 RUN mkdir -p ./app/controllers/concerns
 RUN mkdir -p ./test/helpers
@@ -100,8 +101,10 @@ COPY app/helpers/products_helper.rb app/helpers/
 COPY app/views/layouts/application.html.erb app/views/layouts/
 COPY app/views/products/index.html.erb app/views/products/
 COPY app/views/products/view.html.erb app/views/products/
+COPY app/views/service_status/index.html.erb app/views/service_status/
 COPY app/controllers/application_controller.rb app/controllers/
 COPY app/controllers/products_controller.rb app/controllers/
+COPY app/controllers/service_status_controller.rb app/controllers/
 
 
 # Start the server
