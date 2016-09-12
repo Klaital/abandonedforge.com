@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'products/index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  get '/products/:id', to: 'products#view'
+  get '/products/:id', to: 'products#show'
   get '/products', to: 'products#index'
 
   get '/getservicestatus', to: 'service_status#index'

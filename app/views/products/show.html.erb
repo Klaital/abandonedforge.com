@@ -4,11 +4,12 @@
 <div class="container">
 
   <div class="product-description">
-    <h2><%= @product['name'] %></h2>
+    <h2><%= @product.name %></h2>
+    <p><%= @product.description %></p>
     <div class="product-imageset">
-    <% @product['image-urls'].each do |image| %>
+    <% @product.images.each do |image| %>
       <div class="product-image">
-        <img src="<%= image %>" />
+        <img src="<%= image.large_url %>" />
       </div>
     <% end %>
     </div>
