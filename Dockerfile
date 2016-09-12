@@ -101,12 +101,15 @@ COPY app/helpers/application_helper.rb app/helpers/
 COPY app/helpers/products_helper.rb app/helpers/
 COPY app/views/layouts/application.html.erb app/views/layouts/
 COPY app/views/products/index.html.erb app/views/products/
-COPY app/views/products/view.html.erb app/views/products/
+COPY app/views/products/show.html.erb app/views/products/
 COPY app/views/service_status/index.html.erb app/views/service_status/
 COPY app/controllers/application_controller.rb app/controllers/
 COPY app/controllers/products_controller.rb app/controllers/
 COPY app/controllers/service_status_controller.rb app/controllers/
-
+COPY app/controllers/users_controller.rb app/controllers/
+COPY app/models/users.rb app/models/
+COPY app/models/products.rb app/models/
+COPY app/models/images.rb app/models/
 
 # Start the server
 EXPOSE 3000
