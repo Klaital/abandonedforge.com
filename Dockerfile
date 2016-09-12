@@ -94,6 +94,7 @@ COPY test/controllers/products_controller_test.rb test/
 # Application code
 COPY app/assets/stylesheets/products.scss app/assets/stylesheets/
 COPY app/assets/stylesheets/application.css app/assets/stylesheets/
+COPY app/assets/stylesheets/gallery.css app/assets/stylesheets/
 COPY app/assets/javascripts/products.coffee app/assets/javascripts/
 COPY app/assets/javascripts/application.js app/assets/javascripts/
 COPY app/helpers/application_helper.rb app/helpers/

@@ -4,13 +4,13 @@
 <div class="container">
 
 	<div class="products-list">
-		<ul>
 <% @products.each do |p| %>
-			<li>
-        <%= link_to image_tag(p['thumbnail-url'], :alt => p['name']) + ' ' + p['name'], url_for({:controller => 'products', :action => 'view', :id => p['product-id']}) %>
-
-			</li>
+          <div class="responsive">
+            <div class="img">
+              <%= link_to image_tag(p['thumbnail-url'], :width => '300', :height => '200', :alt => p['name']), url_for({:controller => 'products', :action => 'view', :id => p['product-id']}), :target => '_blank' %>
+            </div>
+            <div class="desc"><%= p['name'] %></div>
+          </div>
 <% end %>
-		</ul>
 	</div>
 </div>
