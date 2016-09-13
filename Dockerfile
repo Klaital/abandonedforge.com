@@ -94,12 +94,14 @@ COPY test/controllers/products_controller_test.rb test/
 # Application code
 COPY app/assets/stylesheets/products.scss app/assets/stylesheets/
 COPY app/assets/stylesheets/application.css app/assets/stylesheets/
-COPY app/assets/stylesheets/gallery.css app/assets/stylesheets/
 COPY app/assets/javascripts/products.coffee app/assets/javascripts/
 COPY app/assets/javascripts/application.js app/assets/javascripts/
 COPY app/helpers/application_helper.rb app/helpers/
 COPY app/helpers/products_helper.rb app/helpers/
 COPY app/views/layouts/application.html.erb app/views/layouts/
+COPY app/views/layouts/_header.html.erb app/views/layouts/
+COPY app/views/layouts/_footer.html.erb app/views/layouts/
+COPY app/views/layouts/_navbar.html.erb app/views/layouts/
 COPY app/views/products/index.html.erb app/views/products/
 COPY app/views/products/show.html.erb app/views/products/
 COPY app/views/service_status/index.html.erb app/views/service_status/
