@@ -1,16 +1,10 @@
-<h1>AbandonedForge Portfolio</h1>
-<p>Howdy! Pardon my dust, the web site is still in progress! It unfortunately is a lower priority than actually working with steel, which is in turn a lower priority than my day job.</p>
-<p>Still, I'm capable of small forging projects, making knives, and blade sharpening/polishing. Please <a href="mailto:abandonedforge@gmail.com">contact me</a> if you're interested in commissioning something!</p>
-<div class="container">
-
 	<div class="products-list">
 <% @products.each do |p| %>
           <div class="responsive">
             <div class="img">
-              <%= link_to image_tag(p.images.first.small_url, :width => '300', :height => '200', :alt => p.images.first.name), url_for({:controller => 'products', :action => 'show', :id => p.id}), :target => '_blank' %>
+              <%= link_to image_tag(p.images.first.small_url, :width => '300', :height => '200', :alt => p.images.first.name), url_for({:controller => 'products', :action => 'show', :id => p.id}) %>
             </div>
             <div class="desc"><%= p.name %></div>
           </div>
 <% end %>
 	</div>
-</div>
