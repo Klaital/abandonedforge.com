@@ -107,10 +107,10 @@ COPY app/controllers/application_controller.rb app/controllers/
 COPY app/controllers/products_controller.rb app/controllers/
 COPY app/controllers/service_status_controller.rb app/controllers/
 COPY app/controllers/users_controller.rb app/controllers/
-COPY app/models/users.rb app/models/
-COPY app/models/products.rb app/models/
-COPY app/models/images.rb app/models/
+COPY app/models/user.rb app/models/
+COPY app/models/product.rb app/models/
+COPY app/models/image.rb app/models/
 
 # Start the server
 EXPOSE 3000
-ENTRYPOINT [ "bin/rails", "server", "-b", "0.0.0.0" ]
+ENTRYPOINT [ "rails", "server", "-b", "0.0.0.0" ]
