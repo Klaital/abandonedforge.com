@@ -22,6 +22,7 @@ RUN mkdir -p ./app/mailers
 RUN mkdir -p ./app/views/layouts
 RUN mkdir -p ./app/views/products
 RUN mkdir -p ./app/views/service_status
+RUN mkdir -p ./app/views/pages/page_content
 RUN mkdir -p ./app/models/concerns
 RUN mkdir -p ./app/controllers/concerns
 RUN mkdir -p ./test/helpers
@@ -105,13 +106,18 @@ COPY app/views/layouts/_navbar.html.erb app/views/layouts/
 COPY app/views/products/index.html.erb app/views/products/
 COPY app/views/products/show.html.erb app/views/products/
 COPY app/views/service_status/index.html.erb app/views/service_status/
+COPY app/views/pages/show.html.erb app/views/pages
+COPY app/views/pages/page_content/_aboutme.html.erb app/views/pages/page_content
 COPY app/controllers/application_controller.rb app/controllers/
 COPY app/controllers/products_controller.rb app/controllers/
 COPY app/controllers/service_status_controller.rb app/controllers/
 COPY app/controllers/users_controller.rb app/controllers/
+COPY app/controllers/pages_controller.rb app/controllers/
 COPY app/models/user.rb app/models/
 COPY app/models/product.rb app/models/
 COPY app/models/image.rb app/models/
+
+
 
 # Start the server
 EXPOSE 3000
