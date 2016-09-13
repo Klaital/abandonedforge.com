@@ -3,8 +3,9 @@
           <div class="responsive">
             <div class="img">
               <%= link_to image_tag(p.images.first.small_url, :width => '300', :height => '200', :alt => p.images.first.name), url_for({:controller => 'products', :action => 'show', :id => p.id}) %>
+              <div class="desc"><%= p.name %></div>
             </div>
-            <div class="desc"><%= p.name %></div>
+
           </div>
 <% end %>
 	</div>

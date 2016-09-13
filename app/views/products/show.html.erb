@@ -1,11 +1,20 @@
+<div class="product-display">
   <div class="product-description">
     <h2><%= @product.name %></h2>
     <p><%= @product.description %></p>
-    <div class="product-imageset">
-    <% @product.images.each do |image| %>
-      <div class="product-image">
-        <img src="<%= image.large_url %>" />
-      </div>
-    <% end %>
-    </div>
+    <table>
+      <tr><td>Steel Type</td><td><%= @product.blade_material %></td></tr>
+      <tr><td>Handle Material</td><td><%= @product.handle_material %></td></tr>
+      <tr><td>Blade Length</td><td><%= @product.blade_length %> inches</td></tr>
+      <tr><td>Overall Length</td><td><%= @product.overall_length %> inches</td></tr>
+    </table>
   </div>
+  <div class="product-imageset">
+  <% @product.images.each do |image| %>
+    <div class="img">
+      <%= link_to image_tag(image.small_url, :alt => image.name), image.large_url %>
+      <div class="desc"><%= image.name %></div>
+    </div>
+  <% end %>
+  </div>
+</div>
