@@ -62,5 +62,8 @@ Rails.application.routes.draw do
   get '/getservicestatus', to: 'service_status#index'
   get '/getservicehealth', to: 'service_status#index'
 
+  # The "pages" are for the "About Me" and other semi-static content.
+  get '/pages/:id', to: 'pages#show'
+
   root 'products#index'
 end
