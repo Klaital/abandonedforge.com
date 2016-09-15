@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 gem 'aws-sdk', '~> 2'
 gem 'dynamoid', '~> 1'
 gem 'bcrypt', '3.1.11'
+gem 'bootstrap-sass', '3.3.6'
 
 gem 'rake'
 

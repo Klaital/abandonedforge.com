@@ -93,10 +93,10 @@ COPY test/test_helper.rb test/
 COPY test/controllers/products_controller_test.rb test/
 
 # Application code
-COPY app/assets/stylesheets/products.scss app/assets/stylesheets/
-COPY app/assets/stylesheets/application.css app/assets/stylesheets/
-COPY app/assets/javascripts/products.coffee app/assets/javascripts/
-COPY app/assets/javascripts/application.js app/assets/javascripts/
+COPY app/assets/javascripts/*.js app/assets/javascripts/
+COPY app/assets/javascripts/*.coffee app/assets/javascripts/
+COPY app/assets/stylesheets/*.css app/assets/stylesheets/
+COPY app/assets/stylesheets/*.scss app/assets/stylesheets/
 COPY app/helpers/application_helper.rb app/helpers/
 COPY app/helpers/products_helper.rb app/helpers/
 COPY app/views/layouts/application.html.erb app/views/layouts/
@@ -117,7 +117,9 @@ COPY app/models/user.rb app/models/
 COPY app/models/product.rb app/models/
 COPY app/models/image.rb app/models/
 
-
+COPY app/controllers/sessions_controller.rb app/controllers/
+COPY app/views/sessions/new.html.erb app/views/sessions/
+COPY app/helpers/sessions_helper.rb app/helpers/
 
 # Start the server
 EXPOSE 3000

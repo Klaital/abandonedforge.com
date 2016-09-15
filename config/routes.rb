@@ -1,6 +1,22 @@
 Rails.application.routes.draw do
 
 
+  get     '/login',   to: 'sessions#new'
+  post    '/login',   to: 'sessions#create'
+  delete  '/logout',  to: 'sessions#destroy'
+
+  get '/products/:id', to: 'products#show'
+  get '/products', to: 'products#index'
+
+  get '/getservicestatus', to: 'service_status#index'
+  get '/getservicehealth', to: 'service_status#index'
+
+  # The "pages" are for the "About Me" and other semi-static content.
+  get '/about',     to: 'pages#show', defaults: {id: 'aboutme'}
+  get '/pages/:id', to: 'pages#show'
+
+  root 'products#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -56,14 +72,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  get '/products/:id', to: 'products#show'
-  get '/products', to: 'products#index'
 
-  get '/getservicestatus', to: 'service_status#index'
-  get '/getservicehealth', to: 'service_status#index'
-
-  # The "pages" are for the "About Me" and other semi-static content.
-  get '/pages/:id', to: 'pages#show'
-
-  root 'products#index'
 end
