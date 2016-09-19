@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
 
-  get     '/login',   to: 'sessions#new'
+  get     '/login',   to: 'sessions#new', as: :login
   post    '/login',   to: 'sessions#create'
-  delete  '/logout',  to: 'sessions#destroy'
+  delete  '/logout',  to: 'sessions#destroy', as: :logout
 
   get '/products/:id', to: 'products#show'
   get '/products', to: 'products#index'
 
-  get '/getservicestatus', to: 'service_status#index'
+  get '/getservicestatus', to: 'service_status#index', as: :ping
   get '/getservicehealth', to: 'service_status#index'
 
   # The "pages" are for the "About Me" and other semi-static content.

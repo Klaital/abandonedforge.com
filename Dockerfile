@@ -99,6 +99,8 @@ COPY app/assets/stylesheets/*.css app/assets/stylesheets/
 COPY app/assets/stylesheets/*.scss app/assets/stylesheets/
 COPY app/helpers/application_helper.rb app/helpers/
 COPY app/helpers/products_helper.rb app/helpers/
+COPY app/helpers/sessions_helper.rb app/helpers/
+COPY app/helpers/users_helper.rb app/helpers/
 COPY app/views/layouts/application.html.erb app/views/layouts/
 COPY app/views/layouts/_header.html.erb app/views/layouts/
 COPY app/views/layouts/_footer.html.erb app/views/layouts/
