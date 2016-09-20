@@ -76,7 +76,6 @@ COPY config/initializers/assets.rb config/initializers/
 COPY config/initializers/wrap_parameters.rb config/initializers/
 COPY config/initializers/backtrace_silencers.rb config/initializers/
 COPY config/initializers/filter_parameter_logging.rb config/initializers/
-COPY config/initializers/aws.rb config/initializers/
 COPY config/initializers/cookies_serializer.rb config/initializers/
 COPY config/initializers/inflections.rb config/initializers/
 COPY config/initializers/mime_types.rb config/initializers/
@@ -85,8 +84,6 @@ COPY config/secrets.yml  config/
 COPY config/environment.rb config/
 
 # Libraries
-# This includes our custom code for DynamoDb connectivity, so it will be updated alongside the application code.
-COPY lib/aws.rb lib/
 
 # Tests
 COPY test/test_helper.rb test/
