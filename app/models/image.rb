@@ -1,9 +1,4 @@
-class Image
-  include Dynamoid::Document
-
+class Image < ApplicationRecord
   belongs_to :product
-  field :name, :string
-  field :large_url, :string
-  field :small_url, :string
-  field :description, :string
+  has_many :image_tag, dependent: :destroy
 end
