@@ -1,6 +1,11 @@
 class User < ApplicationRecord
+  # Associations
   has_many :products, dependent: :destroy
 
+  # Helpers
+  before_save { self.email = email.downcase}
+
+  # Validations
   validates :name,
             presence: true,
             length: { maximum: 50 }
