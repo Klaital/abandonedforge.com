@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'products#index'
 
   get     '/login',   to: 'sessions#new', as: :login
   post    '/login',   to: 'sessions#create'
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/about',     to: 'pages#show', defaults: {id: 'aboutme'}
   get '/pages/:id', to: 'pages#show'
 
-  root 'products#index'
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

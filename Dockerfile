@@ -5,6 +5,7 @@ RUN apt-get update && \
     apt-get install -y net-tools
 
 ADD Gemfile* ./
+RUN gem install bundler
 RUN bundle install
 
 RUN mkdir -p lib/assets
@@ -122,4 +123,4 @@ COPY app/helpers/sessions_helper.rb app/helpers/
 
 # Start the server
 EXPOSE 3000
-ENTRYPOINT [ "rails", "server", "-b", "0.0.0.0" ]
+ENTRYPOINT [ "rails", "server", "-b", "0.0.0.0", '-e', 'test' ]
