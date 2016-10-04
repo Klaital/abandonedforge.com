@@ -1,29 +1,22 @@
-class User
-  include Dynamoid::Document
-  include BCrypt
+class User < ApplicationRecord
+  # Associations
+  has_many :products, dependent: :destroy
 
-  field :name, :string
-  field :email, :string
-  field :password_digest, :string
-  has_many :products
+  # Helpers
+  before_save { self.email = email.downcase}
+  has_secure_password
 
-  before_save { self.email = email.downcase }
-  validates :name, presence: true, length: { maximum: 50 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-#  validates :email, presence: true, length: { maximum: 255 },
-#            format: { with: VALID_EMAIL_REGEX },
-#            uniqueness: { case_sensitive: false }
+  # Validations
+  validates :name,
+            presence: true,
+            length: { maximum: 50 }
 
-  def password=(new_password)
-    # self.password_digest = Password.create(new_password)
-    @password = Password.create(new_password)
-    self.password_digest = @password
-  end
-  def password
-    #self.password_digest
-    @password ||= Password.new(self.password_digest)
-  end
-  def authenticate(given_password)
-    return self.password == given_password
-  end
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :email,
+            presence: true,
+            length: { maximum: 255 },
+            format: { with: VALID_EMAIL_REGEX },
+            uniqueness: { case_sensitive: false }
+
+  validates :password, presence: true, length: { minimum: 6 }
 end

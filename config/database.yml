@@ -19,7 +19,15 @@ development:
 test:
   <<: *default
   database: db/test.sqlite3
+#  adapter: mysql2
+#  database: abandonedforge_test
+#  username: aforge_smith
+#  password: ...
+#  host: mysql.abandonedfactory.net
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  database: abandonedforge
+  username: aforge_smith
+  password: ...
+  host: mysql.abandonedfactory.net

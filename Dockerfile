@@ -5,6 +5,7 @@ RUN apt-get update && \
     apt-get install -y net-tools
 
 ADD Gemfile* ./
+RUN gem install bundler
 RUN bundle install
 
 RUN mkdir -p lib/assets
@@ -76,7 +77,6 @@ COPY config/initializers/assets.rb config/initializers/
 COPY config/initializers/wrap_parameters.rb config/initializers/
 COPY config/initializers/backtrace_silencers.rb config/initializers/
 COPY config/initializers/filter_parameter_logging.rb config/initializers/
-COPY config/initializers/aws.rb config/initializers/
 COPY config/initializers/cookies_serializer.rb config/initializers/
 COPY config/initializers/inflections.rb config/initializers/
 COPY config/initializers/mime_types.rb config/initializers/
@@ -85,8 +85,6 @@ COPY config/secrets.yml  config/
 COPY config/environment.rb config/
 
 # Libraries
-# This includes our custom code for DynamoDb connectivity, so it will be updated alongside the application code.
-COPY lib/aws.rb lib/
 
 # Tests
 COPY test/test_helper.rb test/
@@ -125,4 +123,4 @@ COPY app/helpers/sessions_helper.rb app/helpers/
 
 # Start the server
 EXPOSE 3000
-ENTRYPOINT [ "rails", "server", "-b", "0.0.0.0" ]
+ENTRYPOINT [ "rails", "server", "-b", "0.0.0.0", '-e', 'test' ]
