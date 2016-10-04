@@ -5,42 +5,42 @@ RUN apt-get update && \
     apt-get install -y net-tools
 
 ADD Gemfile* ./
-RUN gem install bundler
-RUN bundle install
+RUN gem install bundler && \
+    bundle install
 
-RUN mkdir -p lib/assets
-RUN mkdir -p lib/tasks
-RUN mkdir -p bin
-RUN mkdir -p config/locales
-RUN mkdir -p config/initializers
-RUN mkdir -p config/environments
-
-RUN mkdir -p ./app/assets/images
-RUN mkdir -p ./app/assets/stylesheets
-RUN mkdir -p ./app/assets/javascripts
-RUN mkdir -p ./app/helpers
-RUN mkdir -p ./app/mailers
-RUN mkdir -p ./app/views/layouts
-RUN mkdir -p ./app/views/products
-RUN mkdir -p ./app/views/service_status
-RUN mkdir -p ./app/views/pages/page_content
-RUN mkdir -p ./app/models/concerns
-RUN mkdir -p ./app/controllers/concerns
-RUN mkdir -p ./test/helpers
-RUN mkdir -p ./test/mailers
-RUN mkdir -p ./test/integration
-RUN mkdir -p ./test/models
-RUN mkdir -p ./test/fixtures
-RUN mkdir -p ./test/controllers
-RUN mkdir -p ./vendor/assets/stylesheets
-RUN mkdir -p ./vendor/assets/javascripts
-RUN mkdir -p ./log
-RUN mkdir -p ./tmp/sessions
-RUN mkdir -p ./tmp/sockets
-RUN mkdir -p ./tmp/pids
-RUN mkdir -p ./tmp/cache/assets/sprockets/v3.0
-RUN mkdir -p ./public
-RUN mkdir -p ./db
+# Create the directory structure
+RUN mkdir -p lib/assets \
+             lib/tasks  \
+             bin        \
+             config/locales \
+             config/initializers \
+             config/environments \
+             app/assets/images \
+             app/assets/stylesheets \
+             app/assets/javascripts \
+             app/helpers \
+             app/mailers \
+             app/views/layouts \
+             app/views/products \
+             app/views/service_status \
+             app/views/pages/page_content \
+             app/models/concerns \
+             app/controllers/concerns \
+             test/helpers \
+             test/mailers \
+             test/integration \
+             test/models \
+             test/fixtures \
+             test/controllers \
+             vendor/assets/stylesheets \
+             vendor/assets/javascripts \
+             log \
+             tmp/sessions \
+             tmp/sockets \
+             tmp/pids \
+             tmp/cache/assets/sprockets/v3.0 \
+             public \
+             db/migrate
 
 # Add the binaries first, they won't change unless Rails is upgraded
 COPY bin/setup bin/
@@ -51,6 +51,7 @@ COPY bin/rake bin/
 
 # Other framework stuff next
 COPY db/seeds.rb db/
+COPY db/schema.rb db/
 COPY config.ru ./
 COPY Gemfile ./
 COPY Gemfile.lock ./
@@ -64,6 +65,7 @@ COPY public/404.html public/
 COPY public/robots.txt public/
 
 # Config stuff
+COPY prod_secret.txt ./
 COPY config/environments/test.rb config/environments/
 COPY config/environments/development.rb config/environments/
 COPY config/environments/production.rb config/environments/
@@ -95,27 +97,39 @@ COPY app/assets/javascripts/*.js app/assets/javascripts/
 COPY app/assets/javascripts/*.coffee app/assets/javascripts/
 COPY app/assets/stylesheets/*.css app/assets/stylesheets/
 COPY app/assets/stylesheets/*.scss app/assets/stylesheets/
+COPY app/assets/images/*.* app/assets/images/
+
 COPY app/helpers/application_helper.rb app/helpers/
 COPY app/helpers/products_helper.rb app/helpers/
 COPY app/helpers/sessions_helper.rb app/helpers/
 COPY app/helpers/users_helper.rb app/helpers/
+
 COPY app/views/layouts/application.html.erb app/views/layouts/
 COPY app/views/layouts/_header.html.erb app/views/layouts/
 COPY app/views/layouts/_footer.html.erb app/views/layouts/
 COPY app/views/layouts/_navbar.html.erb app/views/layouts/
+COPY app/views/pages/show.html.erb app/views/pages
+COPY app/views/pages/page_content/_aboutme.html.erb app/views/pages/page_content
 COPY app/views/products/index.html.erb app/views/products/
 COPY app/views/products/show.html.erb app/views/products/
 COPY app/views/service_status/index.html.erb app/views/service_status/
-COPY app/views/pages/show.html.erb app/views/pages
-COPY app/views/pages/page_content/_aboutme.html.erb app/views/pages/page_content
+COPY app/views/sessions/new.html.erb app/views/sessions/
+COPY app/views/users/new.html.erb app/views/users/
+COPY app/views/users/show.html.erb app/views/users/
+
 COPY app/controllers/application_controller.rb app/controllers/
 COPY app/controllers/products_controller.rb app/controllers/
 COPY app/controllers/service_status_controller.rb app/controllers/
 COPY app/controllers/users_controller.rb app/controllers/
 COPY app/controllers/pages_controller.rb app/controllers/
+COPY app/controllers/sessions_controller.rb app/controllers/
+
+COPY app/models/application_record.rb app/models/
 COPY app/models/user.rb app/models/
 COPY app/models/product.rb app/models/
+COPY app/models/product_material.rb app/models/
 COPY app/models/image.rb app/models/
+COPY app/models/image_tag.rb app/models/
 
 COPY app/controllers/sessions_controller.rb app/controllers/
 COPY app/views/sessions/new.html.erb app/views/sessions/
@@ -123,4 +137,6 @@ COPY app/helpers/sessions_helper.rb app/helpers/
 
 # Start the server
 EXPOSE 3000
-ENTRYPOINT [ "rails", "server", "-b", "0.0.0.0", '-e', 'test' ]
+ENV RAILS_ENV=production
+RUN rails assets:precompile
+ENTRYPOINT [ "sh", "-c", "SECRET_KEY_BASE=`cat prod_secret.txt` RAILS_ENV=production rails s" ]

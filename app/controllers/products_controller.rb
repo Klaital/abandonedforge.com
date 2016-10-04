@@ -3,8 +3,15 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
   def show
-    @product = Product.find(params[:id])
-    @images = @product.images
+    if params[:id] =~ /^\d+$/
+      @product = Product.find(params[:id])
+      @images = @product.images
+    else
+      @product = Product.where(:slug => params[:id]).first
+      raise ActiveRecord::RecordNotFound.new('Product not found') if @product.nil?
+      @images = @product.images
+    end
+
   end
   def save
   end
