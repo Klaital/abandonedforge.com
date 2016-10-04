@@ -4,7 +4,7 @@
             <div class="img">
               <%= link_to image_tag(p.thumbnail_url,
                                     :width => '300', :height => '200', :alt => p.name),
-                          url_for({:controller => 'products', :action => 'show', :id => p.id}) %>
+                          url_for({:controller => 'products', :action => 'show', :id => p.slug}) %>
               <div class="desc"><%= p.name %></div>
             </div>
           </div>

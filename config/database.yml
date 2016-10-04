@@ -29,5 +29,5 @@ production:
   adapter: mysql2
   database: abandonedforge
   username: aforge_smith
-  password: ...
+  password: h0Shinokoe
   host: mysql.abandonedfactory.net

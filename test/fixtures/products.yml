@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  thumbnail_url: MyString
-  description: MyString
-  slug: MyString
+  name: Test Product 1
+  thumbnail_url: http://example.com/product/1/thumbnail
+  description: A test product
+  slug: tp1
 
 two:
-  name: MyString
-  thumbnail_url: MyString
-  description: MyString
-  slug: MyString
+  name: Test Product 2
+  thumbnail_url: http://example.com/product/2/thumbnail
+  description: Another test product
+  slug: tp2
