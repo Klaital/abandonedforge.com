@@ -2,8 +2,13 @@ require 'time'
 class ServiceStatusController < ApplicationController
   def index
     query_start = Time.now
-    query_response = Aws.query_products_from_dynamo
+    @products = Product.all
     @query_timing = ((Time.now.to_f - query_start.to_f) * 1000).round
-    @qty_found = query_response.count
+    @qty_found = @products.length 
+
+    render :json => {
+	:product_count => @qty_found,
+	:db_response_ms => @query_timing,
+    }
   end
 end
