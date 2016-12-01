@@ -1,6 +1,10 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.products-list {
+
+}
 table.product-list {
   width: 70%;
   margin-right: auto;
@@ -8,5 +12,44 @@ table.product-list {
   td, th {
     padding-left: 10px;
     padding-right: 10px;
+  }
+}
+
+div.img {
+  margin: 10px;
+  border: 1px solid #ccc;
+  background-color: whitesmoke;
+}
+
+div.img:hover {
+  border: 1px solid #777;
+}
+
+div.img img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px){
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  .responsive {
+    width: 100%;
   }
 }
