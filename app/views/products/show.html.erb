@@ -1,0 +1,31 @@
+<div class="center jumbotron">
+  <h1>
+    <%= @product.name %>
+  </h1>
+  <%= image_tag @product.thumbnail_url, size: @product.thumbnail_resize %>
+  <% if logged_in? %>
+    <%= link_to 'Edit', edit_product_path(@product) %> |
+  <% end %>
+  <%= link_to 'Back', products_path %>
+</div>
+
+
+
+<p>
+  <strong>Stock:</strong>
+  <%= @product.stock %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  $<%= @product.price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+<p>
+  <%= image_tag @product.product_image_url, size: @product.product_image_size %>
+</p>
+

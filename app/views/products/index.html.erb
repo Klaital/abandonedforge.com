@@ -1,0 +1,33 @@
+<div class="center jumbotron">
+  <h1>All Products</h1>
+  <% if logged_in? %>
+    (<%= link_to '+New Product', new_product_path %>)
+  <% end %>
+</div>
+
+<table class="product-list">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Stock</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to image_tag(product.thumbnail_url, size: product.thumbnail_resize), product %></td>
+        <td><%= link_to product.name, product %></td>
+        <td><%= product.stock %></td>
+        <td>$<%= product.price %></td>
+        <td><%= product.description_shortened %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) if logged_in? %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } if logged_in?%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

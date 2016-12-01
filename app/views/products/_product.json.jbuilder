@@ -1,0 +1,2 @@
+json.extract! product, :id, :name, :thumbnail_url, :thumbnail_size, :product_image_url, :product_image_size, :stock, :price, :description, :created_at, :updated_at
+json.url product_url(product, format: :json)
