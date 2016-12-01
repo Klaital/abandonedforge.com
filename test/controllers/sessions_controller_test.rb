@@ -1,9 +1,7 @@
 require 'test_helper'
 
-class SessionsControllerTest < ActionController::TestCase
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
+class SessionsControllerTest < ActionDispatch::IntegrationTest
+  # test "the truth" do
+  #   assert true
+  # end
 end

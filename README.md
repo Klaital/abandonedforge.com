@@ -1,18 +1,24 @@
-## Docker instructions:
+# README
 
-### Build:
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-```
-docker build -t klaital/abandonedforge .
-```
+Things you may want to cover:
 
-### Run:
-```
-docker run -P --name aforge -i -t klaital/abandonedforge
-```
-You will need to find the port that is exposing the rails instance via this command:
-```
-docker port aforge
-```
+* Ruby version
 
+* System dependencies
 
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
