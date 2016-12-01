@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :products
+  has_many :cart_items
 
   before_save do
     self.email = email.downcase

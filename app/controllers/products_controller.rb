@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @cart_item = current_user.cart_items.new if logged_in?
   end
 
   # GET /products/new
