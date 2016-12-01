@@ -1,21 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  thumbnail_url: MyString
-  thumbnail_size: MyString
-  product_image_url: MyString
-  product_image_size: MyString
-  stock: 1
-  price: 1
-  description: MyString
+weed_puller:
+  name: Weed Puller
+  thumbnail_url: http://example.com/thumb1.jpg
+  thumbnail_size: 128x127
+  product_image_url: http://example.com/product1.jpg
+  product_image_size: 756x413
+  stock: 0
+  price: 50
+  description: A nice weed puller I forged for mom.
+  user: one
 
 two:
-  name: MyString
-  thumbnail_url: MyString
-  thumbnail_size: MyString
-  product_image_url: MyString
-  product_image_size: MyString
+  name: Utility Knife
+  thumbnail_url: http://example.com/thumb2.jpg
+  thumbnail_size: 128x127
+  product_image_url: http://example.com/product2.jpg
+  product_image_size: 756x413
   stock: 1
-  price: 1
-  description: MyString
+  price: 150
+  description: A simple kitchen knife
+  user: one

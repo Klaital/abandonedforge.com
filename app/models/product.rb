@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  belongs_to :user
+
   # Computes a new height x width string after scaling the thumbnail's width
   # to match the specified height, while keeping the correct aspect ratio.
   def thumbnail_resize(new_height= 32)

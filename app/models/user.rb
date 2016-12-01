@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :products
 
   before_save do
     self.email = email.downcase

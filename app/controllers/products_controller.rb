@@ -14,17 +14,28 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
+    unless logged_in?
+      flash.now[:warning] = 'Please log in to a creator account create products.'
+      redirect_to login_path and return
+    end
+    @product = current_user.products.create
   end
 
   # GET /products/1/edit
   def edit
+    unless logged_in? && current_user == @product.user
+      flash.now[:warning] = 'Please log in to a creator account create products.'
+      redirect_to login_path and return
+    end
   end
 
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    unless logged_in?
+      render :file => 'public/401', :status => :unauthorized, :layout => false and return
+    end
+    @product = current_user.products.create(product_params)
 
     respond_to do |format|
       if @product.save
@@ -40,6 +51,9 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    unless logged_in? && current_user == @product.user
+      render :file => 'public/401', :status => :unauthorized, :layout => false and return
+    end
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -54,6 +68,9 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    unless logged_in? && current_user == @product.user
+      render :file => 'public/401', :status => :unauthorized, :layout => false and return
+    end
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
